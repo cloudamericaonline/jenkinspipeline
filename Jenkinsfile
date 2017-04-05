@@ -4,7 +4,11 @@ node {
 }
 
 stage 'test2'
-node {
- echo "Hello from git"
- 
-}
+parallel 'test2-a' : {
+ node {
+ echo "Hello from test2-a"
+ }},
+ 'test2-b' : {
+  node {
+ echo "Hello from test2-a"
+ }}
